@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node --env-file=.env.dev server.js",
-    "dev": "nodemon --env-file=.env.dev index.js",
+    "dev": "nodemon --env-file=.env.dev server.js",
     "test": "jest --runInBand --detectOpenHandles --forceExit "
   },
   "repository": {

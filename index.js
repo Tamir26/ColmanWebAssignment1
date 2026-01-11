@@ -3,8 +3,8 @@ const app = express();
 const mongoose =  require("mongoose");
 
 app.use(express.json());
-const movieRoute = require('./routes/postRoute');
-app.use("/movies", movieRoute);
+const postRoute = require('./routes/postRoute');
+app.use("/posts", postRoute);
 
 const initApp = async () => { 
     const pr = new Promise((resolve) => {
