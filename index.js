@@ -9,7 +9,7 @@ app.use("/movies", movieRoute);
 const initApp = async () => { 
     const pr = new Promise((resolve) => {
             mongoose
-            .connect(process.env.DATABASE_URL, { useNewUrlParser: true })
+            .connect(process.env.DATABASE_URL)
             .then(() => {
                 console.log("Mongoose connected");
                 resolve(app);

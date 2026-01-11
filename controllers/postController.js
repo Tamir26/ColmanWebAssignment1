@@ -2,20 +2,15 @@ const postModel = require('../models/postModel');
 
 const getAllPosts = async (req, res) => {
     try {
-        const sender = req.query.sender;
-        if (sender) {
-            const postsBySender = await postModel.find({ sender: sender });
-            return res.json(postsBySender);
-        }else{
-            const posts =  await postModel.find();
-            res.json(posts);
-        }
-        
-    }catch(error) {
+        const { sender } = req.query;
+        const filter = sender ? { sender } : {};
+        const posts = await postModel.find(filter);
+        res.json(posts);
+    } catch (error) {
         console.error(error);
-        res.status(500).json({message: 'Error retrieving movies', error: error.message});
+        res.status(500).json({ message: 'Error retrieving posts', error: error.message });
     }
-}
+};
 
 const getPostById = async(req, res) => {
     const id = req.params.id;
@@ -53,12 +48,11 @@ const updatePost = async(req, res) => {
     } catch(error) {
         console.error(error);
         res.status(500).json({message: 'Error updating post', error: error.message});
-    }
-}
+    }};
 
 module.exports = {
     getAllPosts,
     getPostById,
     createPost,
-    updatePost
+    updatePost,
 }
